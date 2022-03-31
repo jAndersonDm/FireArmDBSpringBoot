@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>View All Guns</title>
+</head>
+<body>
+<form>
+<table>
+<tr th:each="currentGun: ${gunInfo}">
+	<td th:text="${currentGun.id}" />
+	<td th:text="${currentGun.company}" />
+	<td th:text="${currentGun.type}" />
+	<td th:text="${currentGun.ammo}" />
+	<td><a th:href="@{/edit/{id}(id=${currentGun.id})}">Edit</a></td>
+	<td><a th:href="@{/delete/{id}(id=${currentGun.id})}">Delete</a></td>
+	</tr>
+</table>
+</form>
+<a href="../inputGun">Add a new gun</a>
+</body>
+</html>

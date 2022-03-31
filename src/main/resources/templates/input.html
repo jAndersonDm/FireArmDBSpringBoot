@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Insert New or Edit Gun</title>
+</head>
+<body>
+<form th:object="${newGun}" th:action="@{/update/{id}(id=${newGun.id})}" method=POST>
+Company: <input name="company" size="20" th:field="*{company}"><br />
+Type: <input name="type" size="20" th:field="*{type}"><br />
+Ammo: <input name="ammo" size="20" th:field="*{ammo}"><br />
+<input name="Submit" type="submit" value="submit" />
+</form>
+<a href="../viewAll">View All Guns</a>
+
+</body>
+</html>

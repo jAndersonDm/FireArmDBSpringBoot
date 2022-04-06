@@ -33,9 +33,11 @@ public class WebController {
 
 	@GetMapping("/inputGun")
 	public String addNewGun(Model model) {
+		
 		gunInfo g = new gunInfo();
 		model.addAttribute("newGun", g);
 		return "input";
+			
 	}
 
 	@GetMapping("/edit/{id}")
@@ -48,6 +50,17 @@ public class WebController {
 
 	@PostMapping("/update/{id}")
 	public String reviseGun(gunInfo g, Model model) {
+		
+		if (g.getCompany() == "") {
+			return addNewGun(model);
+		}
+		if (g.getType() == "") {
+			addNewGun(model);
+		}
+		if (g.getAmmo() == "") {
+			return addNewGun(model);
+		}
+		
 		repo.save(g);
 		return viewAllGuns(model);
 	}
@@ -58,4 +71,6 @@ public class WebController {
 	    repo.delete(g);
 	    return viewAllGuns(model);
 	}
+	
+	
 }
